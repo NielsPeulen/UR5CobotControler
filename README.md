@@ -62,3 +62,7 @@ rosrun UR5CobotControler-master ur5_control.py
 ### Cobot safety project
 When You want to add the full system you have to add the package for the simulation in Rviz made by Ron472: https://github.com/Ron472/cobot_visualisation . This package will make a workcell in your planner. when you post objects to this package you can get realtime objects in you workcell.
 To make this project complete you have to add the .py file of StefanCals: https://github.com/StefanCals/ObjectDetection. This script uses a kinect camera to see object in space and by using the package on Ron, it is visible in RViz. 
+
+# Background
+When You look at the source code of the main node (ur5_control) you see I've made a class that contains waypoints. here it hold the position and orientation. 
+In the main loop you can define waypoints and set the correct position. for 
