@@ -45,7 +45,7 @@ roslaunch UR5CobotControler-master UR5_simulation_control.launch
 rosrun UR5CobotControler-master ur5_control.py
 ```
 
-## real UR5
+## Real UR5
 For starting the program with the real robot, you need to start the "UR5_robot_control.launch" launch file. in this file you need to set the correct IP address. before you start the launch file. you can also uncomment the arena ( see package Ron Theelen below) for getting restrictions in you movement. 
 
 if everything is installed correctly, you should be able to move the real robot arm with RViz. The you can start the "ur5.control.py" node. this node will work the same as in the simulation.
