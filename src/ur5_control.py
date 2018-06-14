@@ -193,7 +193,7 @@ if __name__ == '__main__':
                 moving = False
                 print ("waypoint is:%s", curWaypoint)
                 pass
-            if curWaypoint == 7:
+            if curWaypoint == len(waypointlist):
                 curWaypoint = 0
                 oldwaypoint = -1
                 pass
