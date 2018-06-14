@@ -38,6 +38,12 @@ For starting the program with the real robot, you need to start the "UR5_robot_c
 
 if everything is installed correctly, you should be able to move the real robot arm with RViz. The you can start the "ur5.control.py" node. this node will work the same as in the simulation.
 
+
+```
+roslaunch UR5CobotControler-master UR5_robot_control.launch
+rosrun UR5CobotControler-master ur5_control.py
+```
+
 # Cobot safety project
 When You want to add the full system you have to add the package for the simulation in Rviz made by Ron472: https://github.com/Ron472/cobot_visualisation . This package will make a workcell in your planner. when you post objects to this package you can get realtime objects in you workcell.
 To make this project complete you have to add the .py file of StefanCals: https://github.com/StefanCals/ObjectDetection. This script uses a kinect camera to see object in space and by using the package on Ron, it is visible in RViz. 
