@@ -29,7 +29,8 @@ This node will move to 6 waypoints that you can set in the code. The easiest way
 if you want more waypoints you have to make the for loop longer. and add a waypoint in the waypoints class. 
 
 ```
-nkaldsjfalkjsdfl
+roslaunch UR5CobotControler-master UR5_simulation_control.launch
+rosrun UR5CobotControler-master ur5_control.py
 ```
 
 # real UR5
