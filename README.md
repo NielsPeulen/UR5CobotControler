@@ -16,7 +16,19 @@ Simulator:      http://wiki.ros.org/ur_gazebo
 
 Planner:        http://moveit.ros.org/install/source/
 
+# How to install in your catkin workspace
+
+```
+cd catkin_ws/src
+git clone https://github.com/NielsPeulen/UR5CobotControler.git
+catkin_make
+cd catkin_ws/src/UR5CobotControler_master/
+sudo chmod +x src/ur5_tutorial.py 
+sudo chmod +x src/ur5_control.py
+sudo chmod +x src/debug.py 
+```
 # How to use this package
+
 
 This package contains several launch files and several nodes you can run. First we are going to look at the simulation part.
 
@@ -40,7 +52,7 @@ if everything is installed correctly, you should be able to move the real robot 
 
 When you start using the real robot you need to follow this steps first: https://github.com/ThomasTimm/ur_modern_driver
 
-Beaware that you need to change the ur_modern_driver/src/ur_hardware_interface.cpp to the ur_hardware_interface.cpp that is uploaded to this github. Copy it and paste it in your catkin_ws/src/ur_modern_driver/src. Don't forget to delete the old one.
+Be aware that you need to change the ur_modern_driver/src/ur_hardware_interface.cpp to the ur_hardware_interface.cpp that is uploaded to this github. Copy it and paste it in your catkin_ws/src/ur_modern_driver/src. Don't forget to delete the old one.
 
 ```
 roslaunch UR5CobotControler-master UR5_robot_control.launch
