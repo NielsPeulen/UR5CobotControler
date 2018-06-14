@@ -21,5 +21,7 @@ This package contains several launchfiles and several nodes you can run. First w
 
 for the simulation you can run the "UR5_simulation_control.launch" launch file. this launches ROScore, Gazebo, RViz, Moveit! and the UR5 package. when you want to use the functionality of this pack, you can start the "ur5.control.py" node using rosrun. 
 
-This node creates a topic called "ur5_control"
+This node creates a topic called "ur5_control". When you publish a string "stop" the robot will stop moving. when a empty string is send or something different than "stop", the robot will plan a new path and starts moving. 
+
+
 
