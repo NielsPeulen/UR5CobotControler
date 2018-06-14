@@ -9,7 +9,9 @@ Before you can use this package you need to have a working package that can cont
 follow these tutorials for controling the robot:
 
 UR5 controler:  http://wiki.ros.org/universal_robot
+
 Simulator:      http://wiki.ros.org/ur_gazebo
+
 Planner:        http://moveit.ros.org/install/source/
 
 
