@@ -2,7 +2,8 @@
 This UR5 controller will control your robot and can stop the cobot while it's moving.
 This package is tested on a UR5 robot with ROS kinetic.
 
-Get an preview here: https://www.youtube.com/watch?v=YmooYBySHqc
+Get an technical preview here: 	https://www.youtube.com/watch?v=YmooYBySHqc
+Get a quick preview here: 	https://www.youtube.com/watch?v=699i8YqYzvk
 
 In this package you can learn how to use the UR5 robot in a new way. with this package, you can stop the UR5 robot while the UR5 robot is moving.
 
