@@ -37,7 +37,7 @@ For the simulation you can run the "UR5_simulation_control.launch" launch file. 
 ```
 roslaunch UR5CobotControler-master UR5_simulation_control.launch
 ```
-when you want to use the functionality of this package, you can start the "ur5.control.py" node using rosrun in a new tab. 
+When you want to use the functionality of this package, you can start the "ur5.control.py" node using rosrun in a new tab. 
 ```
 rosrun UR5CobotControler-master ur5_control.py
 ```
@@ -60,6 +60,23 @@ wphome = waypoint(-0.528360791026,-0.50224685565,0.468930024121,0.498685876053,0
 
 ## Real UR5
 For starting the program with the real robot, you need to start the "UR5_robot_control.launch" launch file. in this file you need to set the correct IP address. before you start the launch file. you can also uncomment the arena ( see package Ron Theelen below) for getting restrictions in you movement. 
+in the directory launch: "UR5_robot_control.launch", set IP of the robot in line 67 and uncomment when you don't use an eara. 
+```
+<launch>
+    <include file="$(find ur_modern_driver)/launch/ur5_bringup.launch" >
+		<arg name="robot_ip" value="192.168.1.20"/>
+
+	</include>
+    
+	<include file="$(find ur5_movit_naomi)/launch/real.launch">
+	</include>
+	
+	<!--uncomment below when no arena is defined in other package-->
+	<!--<node name="arena_node" pkg="cobot_visualisation" type="arena_node" output="screen" respawn="false" />
+	-->
+</launch>
+```
+
 
 if everything is installed correctly, you should be able to move the real robot arm with RViz. The you can start the "ur5.control.py" node. this node will work the same as in the simulation.
 
@@ -84,7 +101,3 @@ if this is set, the main loop goes into a while loop where all waypoint are exec
 in this while loop we also check if needs to stop. this is done by listening to the topic ur5_contorl. when stop is printed there. the arm will stop.
 
 for checking when the position is reached, we use the goal position of the arm and subtract that from the current position. if this is zero (within the given margin), then the arm will plan and move to the next waypoint.
-
-
-
-
