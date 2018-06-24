@@ -61,7 +61,7 @@ wphome = waypoint(-0.528360791026,-0.50224685565,0.468930024121,0.498685876053,0
 ## Real UR5
 For starting the program with the real robot, you need to start the "UR5_robot_control.launch" launch file. in this file you need to set the correct IP address. before you start the launch file. you can also uncomment the arena ( see package Ron Theelen below) for getting restrictions in you movement. 
 Here a link how you can setup the IP adress of the UR5, look at page 5. https://www.universal-robots.com/media/1226290/weiss_wsg_interfacing_universal_robots.pdf 
-**Make sure you set the IP of you linux computer in the same range and static to connect to the robot**
+**Make sure you set the IP of you linux computer in the same range and static to get connection with the robot**
 
 in the directory launch: "UR5_robot_control.launch", set IP of the robot in line 67 and uncomment when you don't use an eara. 
 ```
@@ -89,17 +89,16 @@ rosrun UR5CobotControler-master ur5_control.py
 ```
 When you start using the real robot you need to follow this steps first: https://github.com/ThomasTimm/ur_modern_driver
 
-Be aware that you need to change the ur_modern_driver/src/ur_hardware_interface.cpp to the ur_hardware_interface.cpp that is uploaded to this github. Copy it and paste it in your catkin_ws/src/ur_modern_driver/src. Don't forget to delete the old one.
+Be aware! You need to change the ur_modern_driver/src/ur_hardware_interface.cpp to the ur_hardware_interface.cpp that is uploaded to this github. Copy it and paste it in your catkin_ws/src/ur_modern_driver/src. Don't forget to delete the old one.
 
 ### Cobot safety project
-When You want to add the full system you have to add the package for the simulation in Rviz made by Ron472: https://github.com/Ron472/cobot_visualisation . This package will make a workcell in your planner. when you post objects to this package you can get realtime objects in you workcell.
+When You want to add the full system, you have to add the package for the simulation in Rviz made by Ron472: https://github.com/Ron472/cobot_visualisation . This package will make a workcell in your planner. When you post objects to the topics of this package you can get realtime objects in you workcell.
 To make this project complete you have to add the .py file of StefanCals: https://github.com/StefanCals/ObjectDetection. This script uses a kinect camera to see object in space and by using the package on Ron, it is visible in RViz. 
 
 # Background
-When You look at the source code of the main node (ur5_control) you see I've made a class that contains waypoints. here it hold the position and orientation. 
-In the main loop you can define waypoints and set the correct position. the mailoop also contains an array with all the waypoints that need to be executed. here you can add as many as you want.
+When You look at the source code of the main node "ur5_control.py", you can see the package contains a class that holds all waypoints and his position and orientation. In the main loop you can define waypoints and the order to loop the waypoints in. All the waypoints are set in an array for the main while loop to loop through.
 
-if this is set, the main loop goes into a while loop where all waypoint are execuded. **important**: ``` arm.go(wait=False)``` will start moving the arm. wait is set to false. this means we can interrupt the arm at anytime. 
-in this while loop we also check if needs to stop. this is done by listening to the topic ur5_contorl. when stop is printed there. the arm will stop.
+If all waypoints are set, the main loop goes into a while loop where all waypoint are execuded. **important**: code line number 184 ``` arm.go(wait=False)``` will start moving the arm. See that wait is set to false, this means we can interrupt the arm at anytime. 
+In this while loop we also check if needs to stop, this is done by listening to the topic ur5_contorl. when 'stop' is published the arm will stop.
 
-for checking when the position is reached, we use the goal position of the arm and subtract that from the current position. if this is zero (within the given margin), then the arm will plan and move to the next waypoint.
+For checking when the position is reached, we use the goal position of the arm and subtract that from the current position. if this is zero (within the given margin), then the arm will plan and move to the next waypoint. look at ```def checkPos(position):``` code line 69 to 82 for the code. 
