@@ -60,6 +60,9 @@ wphome = waypoint(-0.528360791026,-0.50224685565,0.468930024121,0.498685876053,0
 
 ## Real UR5
 For starting the program with the real robot, you need to start the "UR5_robot_control.launch" launch file. in this file you need to set the correct IP address. before you start the launch file. you can also uncomment the arena ( see package Ron Theelen below) for getting restrictions in you movement. 
+Here a link how you can setup the IP adress of the UR5, look at page 5. https://www.universal-robots.com/media/1226290/weiss_wsg_interfacing_universal_robots.pdf 
+**Make sure you set the IP of you linux computer in the same range and static to connect to the robot**
+
 in the directory launch: "UR5_robot_control.launch", set IP of the robot in line 67 and uncomment when you don't use an eara. 
 ```
 <launch>
@@ -76,18 +79,17 @@ in the directory launch: "UR5_robot_control.launch", set IP of the robot in line
 	-->
 </launch>
 ```
-
-
-if everything is installed correctly, you should be able to move the real robot arm with RViz. The you can start the "ur5.control.py" node. this node will work the same as in the simulation.
-
+Now start the launchfile
+```
+roslaunch UR5CobotControler-master UR5_robot_control.launch
+```
+If everything is installed correctly, you should be able to move the real robot arm with RViz. Then you can start the "ur5.control.py" node in a new tab. this node will work the same as in the simulation discribed above.
+```
+rosrun UR5CobotControler-master ur5_control.py
+```
 When you start using the real robot you need to follow this steps first: https://github.com/ThomasTimm/ur_modern_driver
 
 Be aware that you need to change the ur_modern_driver/src/ur_hardware_interface.cpp to the ur_hardware_interface.cpp that is uploaded to this github. Copy it and paste it in your catkin_ws/src/ur_modern_driver/src. Don't forget to delete the old one.
-
-```
-roslaunch UR5CobotControler-master UR5_robot_control.launch
-rosrun UR5CobotControler-master ur5_control.py
-```
 
 ### Cobot safety project
 When You want to add the full system you have to add the package for the simulation in Rviz made by Ron472: https://github.com/Ron472/cobot_visualisation . This package will make a workcell in your planner. when you post objects to this package you can get realtime objects in you workcell.
