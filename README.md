@@ -98,7 +98,8 @@ To make this project complete you have to add the .py file of StefanCals: https:
 # Background
 When You look at the source code of the main node "ur5_control.py", you can see the package contains a class that holds all waypoints and his position and orientation. In the main loop you can define waypoints and the order to loop the waypoints in. All the waypoints are set in an array for the main while loop to loop through.
 
-If all waypoints are set, the main loop goes into a while loop where all waypoint are execuded. **important**: code line number 184 ``` arm.go(wait=False)``` will start moving the arm. See that wait is set to false, this means we can interrupt the arm at anytime. 
+If all waypoints are set, the main loop goes into a while loop where all waypoint are execuded. 
+**Important**: code line number 184 ``` arm.go(wait=False)``` will start moving the arm. See that wait is set to false, this means we can interrupt the arm at anytime. 
 In this while loop we also check if needs to stop, this is done by listening to the topic ur5_contorl. when 'stop' is published the arm will stop.
 
 For checking when the position is reached, we use the goal position of the arm and subtract that from the current position. if this is zero (within the given margin), then the arm will plan and move to the next waypoint. look at ```def checkPos(position):``` code line 69 to 82 for the code. 
