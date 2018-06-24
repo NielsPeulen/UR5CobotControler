@@ -87,7 +87,7 @@ If everything is installed correctly, you should be able to move the real robot 
 ```
 rosrun UR5CobotControler-master ur5_control.py
 ```
-When you start using the real robot you need to follow this steps first: https://github.com/ThomasTimm/ur_modern_driver
+When you start using the real robot you need to follow this steps first: https://github.com/ThomasTimm/ur_modern_driver Check the Installation tab!
 
 Be aware! You need to change the ur_modern_driver/src/ur_hardware_interface.cpp to the ur_hardware_interface.cpp that is uploaded to this github. Copy it and paste it in your catkin_ws/src/ur_modern_driver/src. Don't forget to delete the old one.
 
