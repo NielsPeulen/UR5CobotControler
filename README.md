@@ -52,7 +52,7 @@ rosrun UR5CobotControler-master debug.py
 ```
 In the ur5_control.py that you can find in the src directory, code line 140 to 146 you can find all the waypoints the robot will move to. 
 If you want to add a waypoint give it a logical name, define it as waypoint and set all position values in the right order.
-You can add waypoints after code line 146.
+You can add waypoints after code line 146. Be aware: all values are in **quaternion**.
 ```
 # values order by: oriX, oriY, oriZ, oriW, posX, posY, posZ
 wphome = waypoint(-0.528360791026,-0.50224685565,0.468930024121,0.498685876053,0.476622409669,-0.422863959504,0.607072856755)
