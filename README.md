@@ -41,13 +41,22 @@ when you want to use the functionality of this package, you can start the "ur5.c
 ```
 rosrun UR5CobotControler-master ur5_control.py
 ```
-
 This node creates a topic called "ur5_control". When you publish a string "stop" the robot will stop moving. when a empty string is send or something different than "stop", the robot will plan a new path and starts moving. 
-
-This node will move to 6 waypoints that you can set in the code. The easiest way to do this is by moving the robot with Rviz to the position you want, then start the "debug.py" node. this node will print the position. this position you can copy in control node.
-if you want more waypoints you have to make the for loop longer. and add a waypoint in the waypoints class. 
-
-
+```
+rostopic pub /ur5_control std_msgs/String "stop"
+rostopic pub /ur5_control std_msgs/String ""
+```
+This node will move to 6 waypoints that you can set in the code, ur5_control.py The easiest way to do this is by moving the robot with Rviz to the position you want, then start the "debug.py" node. this node will print the position. this position you can copy in control node.
+```
+rosrun UR5CobotControler-master debug.py
+```
+In the ur5_control.py that you can find in the src directory, code line 140 to 146 you can find all the waypoints the robot will move to. 
+If you want to add a waypoint give it a logical name, define it as waypoint and set all position values in the right order.
+You can add waypoints after code line 146.
+```
+# values order by: oriX, oriY, oriZ, oriW, posX, posY, posZ
+wphome = waypoint(-0.528360791026,-0.50224685565,0.468930024121,0.498685876053,0.476622409669,-0.422863959504,0.607072856755)
+```
 
 ## Real UR5
 For starting the program with the real robot, you need to start the "UR5_robot_control.launch" launch file. in this file you need to set the correct IP address. before you start the launch file. you can also uncomment the arena ( see package Ron Theelen below) for getting restrictions in you movement. 
